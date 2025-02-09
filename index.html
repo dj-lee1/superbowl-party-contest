@@ -141,19 +141,19 @@
                 <li>✅ The person with the most points at the end of the broadcast wins a <strong>$25 gift card! 💰</strong></li>
             </ul>
             <p class="mt-4 text-medium">Don't worry, you don't need to know ball to have success here. Just trust your gut and take your best shot 🏈</p>
-            <!-- <p class="mt-4 text-medium">Check back in throughout the game to track your standings in real time on the <strong>Results</strong> tab 🏈</p> -->
+            <p class="mt-4 text-medium"> Side note: We'll try to keep this updated in real time so (1) let us know if a question gets answered, and (2) check back in throughout the game to track your standings in real time on the <strong>Results</strong> tab 🏈</p>
 
-            <!-- <nav class="flex justify-around mt-4">
-                <button onclick="showSubTab('survey', 'survey-button')" id="survey-button" class="tab-link whitespace-nowrap py-2 px-2 text-medium font-medium border-[#f16b55] text-[#f16b55] hover:text-[#f16b55] hover:border-b-2 hover:border-[#f16b55]">Enter your Picks</button>
-                <button onclick="showSubTab('results', 'results-button')" id="results-button" class="tab-link whitespace-nowrap py-2 px-2 text-medium font-medium border-[#f16b55] text-[#f16b55] hover:text-[#f16b55] hover:border-b-2 hover:border-[#f16b55]">See Results</button>
-            </nav> -->
+            <nav class="flex justify-around mt-4">
+                <button onclick="showSubTab('survey', 'survey-button')" id="survey-button" class="sub-tab-link whitespace-nowrap py-2 px-2 text-medium font-medium border-[#f16b55] text-[#f16b55] hover:text-[#f16b55] hover:border-b-2 hover:border-[#f16b55]">Enter your Picks</button>
+                <button onclick="showSubTab('results', 'results-button')" id="results-button" class="sub-tab-link whitespace-nowrap py-2 px-2 text-medium font-medium hover:text-[#f16b55] hover:border-b-2 hover:border-[#f16b55]">See Results</button>
+            </nav>
 
-            <div id="survey" class="mt-4">
+            <div id="survey" class="sub-tab-content mt-4">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdcGPDHsnb2yjZCCnKrwqkyUVAEuzLES-j-OnLFse6K0jG-UQ/viewform?embedded=true" class="w-full h-96 border-none rounded-lg mt-2"></iframe>
             </div>
-            <!-- <div id="results" class="mt-4 hidden">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdcGPDHsnb2yjZCCnKrwqkyUVAEuzLES-j-OnLFse6K0jG-UQ/viewform?embedded=true" class="w-full h-96 border-none rounded-lg mt-2"></iframe>
-            </div> -->
+            <div id="results" class="sub-tab-content mt-4 hidden">
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRX4qv7ZDreqyuh1Q3nwCh-X9GCN-3_PAAm7n1VhwgsBZr2bo93JwQvzrg745wY-NvP31gNVJnpcEeO/pubchart?oid=491971213&amp;format=interactive" class="w-full h-96 border-none rounded-lg mt-2"></iframe>
+            </div>
         </div>
     </div>
 
@@ -167,6 +167,16 @@
                 document.getElementById(buttonId).classList.add('border-[#f16b55]', 'text-[#f16b55]', 'border-b-2');
             // document.getElementById(buttonId).classList.remove('border-transparent',);
         }
+
+        function showSubTab(subTabId, buttonId) {
+            document.querySelectorAll('.sub-tab-content').forEach(subTab => subTab.classList.add('hidden'));
+            document.getElementById(subTabId).classList.remove('hidden');
+
+            document.querySelectorAll('.sub-tab-link').forEach(
+                button => button.classList.remove('border-[#f16b55]', 'text-[#f16b55]', 'border-b-2'));
+                document.getElementById(buttonId).classList.add('border-[#f16b55]', 'text-[#f16b55]', 'border-b-2');
+        }
+
         // Initialize the first tab as active
         document.addEventListener('DOMContentLoaded', function() {
             showTab('home', 'home-button');
